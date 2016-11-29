@@ -95,7 +95,7 @@ public class MainActivity extends Activity implements LoyaltyCardReader.AccountC
         getWindow().clearFlags(android.view.WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);//清除FLAG
         getWindow().setFlags(android.view.WindowManager.LayoutParams.FLAG_FULLSCREEN,android.view.WindowManager.LayoutParams.FLAG_FULLSCREEN);
         //标题是属于View的，所以窗口所有的修饰部分被隐藏后标题依然有效
-        //requestWindowFeature(getWindow().FEATURE_NO_TITLE);
+        requestWindowFeature(getWindow().FEATURE_NO_TITLE);
         sendBroadcast(new Intent("com.android.action.hide_navigationbar"));
         //if(intent.getBooleanExtra("back", false))
         {
@@ -103,7 +103,6 @@ public class MainActivity extends Activity implements LoyaltyCardReader.AccountC
             if(ab != null)
                 ab.setDisplayHomeAsUpEnabled(true);
         }
-
 		setContentView(R.layout.activity_main);
 
         IntentFilter filter = new IntentFilter();
@@ -149,8 +148,9 @@ public class MainActivity extends Activity implements LoyaltyCardReader.AccountC
                 .bitmapConfig(Bitmap.Config.ARGB_8888)
                 .build();
 
-        BaseApplication.getApplication().getImageLoader().displayImage("http://www.tyjdtzjc.cn/resource/kindeditor/attached/image/20150831/20150831021658_90595.png", imageView,options);
+        //BaseApplication.getApplication().getImageLoader().displayImage("http://www.tyjdtzjc.cn/resource/kindeditor/attached/image/20150831/20150831021658_90595.png", imageView,options);
          /**二维码图片 这我百度的图片,你把网址替换就可以了*/
+        /**现在我在布局文件中写死了 */
 
         //图片控件初始化
         wifi_image = (ImageView) findViewById(R.id.wifi_image);
@@ -937,7 +937,7 @@ public class MainActivity extends Activity implements LoyaltyCardReader.AccountC
             {
                 for (int i = 0; i < networkInfo.length; i++)
                 {
-                    networkInfo[i].isAvailable()
+                    networkInfo[i].isAvailable();
                     // 判断当前网络状态是否为连接状态
                     if (networkInfo[i].getState() == NetworkInfo.State.CONNECTED)
                     {
